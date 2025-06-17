@@ -1,0 +1,434 @@
+Queue 2 : Array Implementation using rear index
+
+Consider implementing a fixed size circular queue of maximum size 5 using an array.
+
+ 
+
+Note that the array contents holds the contents of the queue and the integer front stores the index of the front element in the queue and the integer rear stores the index of the last element in the queue.
+
+Write a java program to implement enQueue and deQueue operation on queue and to display the contents of the queue.
+
+ 
+
+Create a class named Queue and include the following methods
+
+Method Name	Description
+void enQueue(int data)	This method takes the data to be inserted in the queue and Print the message “Queue is full” in the enQueue function when an attempt is made to insert a data into a full queue.
+int deQueue()	This method to delete the data from the queue and Print the message “Queue is empty” in the deQueue function and return the value -1000 when an attempt is made to delete data from an empty queue.
+void display()	This method to display all the data in the queue.
+ 
+
+In the Queue function intialize the value of front and rear to -1.
+
+Refer function specifications for further details.
+
+ 
+
+Input and Output Format:
+
+Refer sample input and output for formatting specifications.
+
+Note that the statement “The contents of the queue are” is in the main function. In the display function, if the queue is empty, print “ {}”.
+
+[All text in bold corresponds to input and the rest corresponds to output]
+
+Sample Input and Output:
+
+Choice 1 : Enter element into Queue
+
+Choice 2 : Delete element from Queue
+
+Choice 3 : Display
+
+Any other choice : Exit
+
+Enter your choice
+
+3
+
+The contents of the queue are {}
+
+Choice 1 : Enter element into Queue
+
+Choice 2 : Delete element from Queue
+
+Choice 3 : Display
+
+Any other choice : Exit
+
+Enter your choice
+
+1
+
+Enter the element to be inserted/entered
+
+10
+
+Choice 1 : Enter element into Queue
+
+Choice 2 : Delete element from Queue
+
+Choice 3 : Display
+
+Any other choice : Exit
+
+Enter your choice
+
+1
+
+Enter the element to be inserted/entered
+
+20
+
+Choice 1 : Enter element into Queue
+
+Choice 2 : Delete element from Queue
+
+Choice 3 : Display
+
+Any other choice : Exit
+
+Enter your choice
+
+1
+
+Enter the element to be inserted/entered
+
+30
+
+Choice 1 : Enter element into Queue
+
+Choice 2 : Delete element from Queue
+
+Choice 3 : Display
+
+Any other choice : Exit
+
+Enter your choice
+
+1
+
+Enter the element to be inserted/entered
+
+40
+
+Choice 1 : Enter element into Queue
+
+Choice 2 : Delete element from Queue
+
+Choice 3 : Display
+
+Any other choice : Exit
+
+Enter your choice
+
+1
+
+Enter the element to be inserted/entered
+
+50
+
+Choice 1 : Enter element into Queue
+
+Choice 2 : Delete element from Queue
+
+Choice 3 : Display
+
+Any other choice : Exit
+
+Enter your choice
+
+1
+
+Enter the element to be inserted/entered
+
+60
+
+Queue is full
+
+Choice 1 : Enter element into Queue
+
+Choice 2 : Delete element from Queue
+
+Choice 3 : Display
+
+Any other choice : Exit
+
+Enter your choice
+
+2
+
+The deleted element is 10
+
+Choice 1 : Enter element into Queue
+
+Choice 2 : Delete element from Queue
+
+Choice 3 : Display
+
+Any other choice : Exit
+
+Enter your choice
+
+2
+
+The deleted element is 20
+
+Choice 1 : Enter element into Queue
+
+Choice 2 : Delete element from Queue
+
+Choice 3 : Display
+
+Any other choice : Exit
+
+Enter your choice
+
+1
+
+Enter the element to be inserted/entered
+
+60
+
+Choice 1 : Enter element into Queue
+
+Choice 2 : Delete element from Queue
+
+Choice 3 : Display
+
+Any other choice : Exit
+
+Enter your choice
+
+3
+
+The contents of the queue are 30 40 50 60
+
+Choice 1 : Enter element into Queue
+
+Choice 2 : Delete element from Queue
+
+Choice 3 : Display
+
+Any other choice : Exit
+
+Enter your choice
+
+2
+
+The deleted element is 30
+
+Choice 1 : Enter element into Queue
+
+Choice 2 : Delete element from Queue
+
+Choice 3 : Display
+
+Any other choice : Exit
+
+Enter your choice
+
+2
+
+The deleted element is 40
+
+Choice 1 : Enter element into Queue
+
+Choice 2 : Delete element from Queue
+
+Choice 3 : Display
+
+Any other choice : Exit
+
+Enter your choice
+
+2
+
+The deleted element is 50
+
+Choice 1 : Enter element into Queue
+
+Choice 2 : Delete element from Queue
+
+Choice 3 : Display
+
+Any other choice : Exit
+
+Enter your choice
+
+3
+
+The contents of the queue are 60
+
+Choice 1 : Enter element into Queue
+
+Choice 2 : Delete element from Queue
+
+Choice 3 : Display
+
+Any other choice : Exit
+
+Enter your choice
+
+2
+
+The deleted element is 60
+
+Choice 1 : Enter element into Queue
+
+Choice 2 : Delete element from Queue
+
+Choice 3 : Display
+
+Any other choice : Exit
+
+Enter your choice
+
+2
+
+Queue is empty
+
+Choice 1 : Enter element into Queue
+
+Choice 2 : Delete element from Queue
+
+Choice 3 : Display
+
+Any other choice : Exit
+
+Enter your choice
+
+3
+
+The contents of the queue are {}
+
+Choice 1 : Enter element into Queue
+
+Choice 2 : Delete element from Queue
+
+Choice 3 : Display
+
+Any other choice : Exit
+
+Enter your choice
+
+4
+
+
+
+
+
+Queue.java:
+ import java.util.*;
+
+public class Queue{
+
+  /* Initialize the value of front and rear to -1 */
+  int[] arr=new int[5];
+  int N=arr.length;
+  int front=-1,rear=-1;
+  public boolean isEmpty(){
+ if(front==-1&&rear==-1) return true;
+ return false;
+  }
+  public boolean isFull(){
+   if((rear+1)%N==front)return true;
+   return false;
+  }
+
+ public void enQueue(int data)
+ {
+ /* Fill your code here */
+ if(isFull()){
+  System.out.println("Queue is full");
+  return;
+ }if(isEmpty()){
+  front=0;
+  rear=0;
+ }else{
+  rear=(rear+1)%N;
+ }arr[rear]=data;
+	
+ }
+
+ public int deQueue()
+ {
+  /* Fill your code here */
+  if(isEmpty()){
+   System.out.println("Queue is empty");
+   return -1000;
+  }
+  int v=arr[front];
+  if(front==rear){
+   front=rear=-1;
+  }else{
+   front=(front+1)%N;
+  }return v;
+ }
+
+ public void display()
+ {
+ /* Fill your code here */
+ if(isEmpty()){
+  System.out.println(" {}");
+   return ;
+ }int i=front;
+ while(true){
+  System.out.print(" "+arr[i]);
+  if(i==rear)break;
+  i=(i+1)%N;
+ }
+ }
+
+
+}
+
+
+Main.java:
+import java.util.*;  
+public class Main{  
+public static void main(String[] args) {  
+    int choice=0;  
+    Scanner sc = new Scanner(System.in);      
+    Queue q = new Queue(); 
+    do{
+        System.out.println("Choice 1 : Enter element into Queue\nChoice 2 : Delete element from Queue\nChoice 3 : Display\nAny other choice : Exit");  
+        System.out.println("Enter your choice");        
+        choice = sc.nextInt();  
+        switch(choice)  
+        {  
+            case 1:  
+            {   
+                System.out.println("Enter the element to be inserted/entered");
+                int a=sc.nextInt();
+                sc.nextLine();
+                //Fill your code here 
+                q.enQueue(a);
+                break;  
+            }  
+            case 2:  
+            {  
+                //Fill your code here
+
+                int b=q.deQueue();
+                if(b!=-1000)
+                System.out.println("The deleted element is "+b);
+                break;  
+            }  
+            case 3:  
+            {  
+  System.out.print("The contents of the queue are");
+                //Fill your code here 
+                q.display();
+                System.out.println();
+                break;  
+            }  
+            default:  
+            {  
+                System.exit(0);  
+                break; 
+            }    
+    }
+    }while(choice<4);
+}
+}

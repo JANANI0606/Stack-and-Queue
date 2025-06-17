@@ -1,0 +1,300 @@
+Stack 2 : Array Implementation : Push and Pop
+
+Write a program to implement push and pop operation on stack and to display the contents of the stack.
+
+Create a class named Stack and include the following methods
+
+Method Name	Description
+void push(int data)	This method takes the data to be pushed in the stack and Print the message “Stack is full” in the push function when an attempt is made to push a data into a full stack.
+int pop()	This method to pop the data from the stack and Print the message “Stack is empty” in the pop function and return the value -1000 when an attempt is made to pop data from an empty stack.
+void display()	This method to display all the data in the stack.
+In the Stack function intialize the value of top to -1 and initialize the value of maxSize.
+
+Refer function specifications for further details.
+
+ 
+
+Input and Output Format:
+
+Refer sample input and output for formatting specifications.
+
+Note that the statement “The contents of the stack are” is in the main function. In the display function, if the stack is empty, print “ {}”.
+
+[All text in bold corresponds to input and the rest corresponds to output]
+
+Sample Input and Output:
+
+Enter the maximum size of the stack
+
+3
+
+Choice 1 : Push
+
+Choice 2 : Pop
+
+Choice 3 : Display
+
+Any other choice : Exit
+
+Enter your choice
+
+1
+
+Enter the element to be pushed
+
+1
+
+Choice 1 : Push
+
+Choice 2 : Pop
+
+Choice 3 : Display
+
+Any other choice : Exit
+
+Enter your choice
+
+1
+
+Enter the element to be pushed
+
+2
+
+Choice 1 : Push
+
+Choice 2 : Pop
+
+Choice 3 : Display
+
+Any other choice : Exit
+
+Enter your choice
+
+1
+
+Enter the element to be pushed
+
+3
+
+Choice 1 : Push
+
+Choice 2 : Pop
+
+Choice 3 : Display
+
+Any other choice : Exit
+
+Enter your choice
+
+1
+
+Enter the element to be pushed
+
+4
+
+Stack is full
+
+Choice 1 : Push
+
+Choice 2 : Pop
+
+Choice 3 : Display
+
+Any other choice : Exit
+
+Enter your choice
+
+3
+
+The contents of the stack are 1 2 3
+
+Choice 1 : Push
+
+Choice 2 : Pop
+
+Choice 3 : Display
+
+Any other choice : Exit
+
+Enter your choice
+
+2
+
+The popped element is 3
+
+Choice 1 : Push
+
+Choice 2 : Pop
+
+Choice 3 : Display
+
+Any other choice : Exit
+
+Enter your choice
+
+2
+
+The popped element is 2
+
+Choice 1 : Push
+
+Choice 2 : Pop
+
+Choice 3 : Display
+
+Any other choice : Exit
+
+Enter your choice
+
+2
+
+The popped element is 1
+
+Choice 1 : Push
+
+Choice 2 : Pop
+
+Choice 3 : Display
+
+Any other choice : Exit
+
+Enter your choice
+
+2
+
+Stack is empty
+
+Choice 1 : Push
+
+Choice 2 : Pop
+
+Choice 3 : Display
+
+Any other choice : Exit
+
+Enter your choice
+
+3
+
+The contents of the stack are {}
+
+Choice 1 : Push
+
+Choice 2 : Pop
+
+Choice 3 : Display
+
+Any other choice : Exit
+
+Enter your choice
+
+4
+
+
+
+Stack.java:
+import java.util.*;
+
+public class Stack{
+    int[] arr;
+    int n;
+     public Stack(int n){
+ 	        this.n=n;
+             arr=new int[n];
+             }
+          int top=-1;
+         
+	public void push(int data)
+	{
+	/* Fill your code here */
+    if(top==n-1){
+        System.out.println("Stack is full");
+    }else{
+            arr[++top]=data;
+    }
+    
+    
+	}
+
+	public int pop()
+	{
+	 /* Fill your code here */
+     if(top==-1){
+         System.out.println("Stack is empty ");
+         return -1000;
+     }else{
+         int temp=top;
+         top--;
+         return arr[temp];
+     }
+	}
+
+	public void display()
+	{
+	/* Fill your code here */
+    if(top==-1){
+         System.out.print(" {}");
+     }
+    for(int i=0;i<=top;i++){
+        System.out.print(" "+arr[i]);
+    }
+	}
+
+
+}
+
+
+
+Main.java:
+import java.util.*;  
+public class Main{  
+public static void main(String[] args) {  
+    int choice=0;  
+    Scanner sc = new Scanner(System.in);     
+    System.out.println("Enter the maximum size of the stack");  
+    int n=sc.nextInt();  
+    Stack s = new Stack(n); 
+    do{
+        System.out.println("Choice 1 : Push\nChoice 2 : Pop\nChoice 3 : Display\nAny other choice : Exit");  
+        System.out.println("Enter your choice");        
+        choice = sc.nextInt();  
+        switch(choice)  
+        {  
+            case 1:  
+            {   
+                System.out.println("Enter the element to be pushed");
+                int a=sc.nextInt();
+                sc.nextLine();
+                //Fill your code here  
+                s.push(a);
+                break;  
+            }  
+            case 2:  
+            {  
+                //Fill your code here
+
+                int b=s.pop();
+                if(b!=-1000){
+                System.out.println("The popped element is "+b);}
+                
+                break;  
+            }  
+            case 3:  
+            {  
+		        System.out.print("The contents of the stack are ");
+             
+         
+                //Fill your code here 
+                s.display();
+                System.out.print("\n");
+                break;  
+            }  
+            default:  
+            {  
+                System.exit(0);  
+                break; 
+            }    
+    }
+    }while(choice<4);
+}
+}  
